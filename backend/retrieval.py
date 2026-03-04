@@ -7,18 +7,16 @@ from loguru import logger
 from backend.schemas import RetrievalChunk
 
 DATA_DIR = Path(__file__).parent.parent / "data"
+CHROMA_DB_PATH = Path(__file__).parent.parent / "chroma_db"
 
-_client: chromadb.ClientAPI | None = None
 _collection: chromadb.Collection | None = None
 
 
-def _get_collection() -> chromadb.Collection:
-    global _client, _collection
-    if _collection is not None:
-        return _collection
+def init_retrieval() -> None:
+    global _collection
 
-    _client = chromadb.Client()
-    _collection = _client.get_or_create_collection(
+    client = chromadb.PersistentClient(path=str(CHROMA_DB_PATH))
+    _collection = client.get_or_create_collection(
         name="astrology_knowledge",
         metadata={"hnsw:space": "cosine"},
     )
@@ -26,7 +24,7 @@ def _get_collection() -> chromadb.Collection:
     if _collection.count() == 0:
         _ingest_knowledge()
 
-    return _collection
+    logger.info("ChromaDB initialized with {n} documents", n=_collection.count())
 
 
 def _ingest_knowledge() -> None:
@@ -76,12 +74,12 @@ def _ingest_knowledge() -> None:
 
 
 def query(features: list[str], user_question: str, n_results: int = 5) -> list[RetrievalChunk]:
-    collection = _get_collection()
+    if _collection is None:
+        raise RuntimeError("ChromaDB not initialized — call init_retrieval() first")
 
-    # Combine features and question into query text
     query_text = f"{user_question} {' '.join(features)}"
 
-    results = collection.query(query_texts=[query_text], n_results=n_results)
+    results = _collection.query(query_texts=[query_text], n_results=n_results)
 
     chunks = []
     if results["documents"] and results["documents"][0]:
@@ -93,7 +91,7 @@ def query(features: list[str], user_question: str, n_results: int = 5) -> list[R
             chunks.append(RetrievalChunk(
                 text=doc,
                 metadata=meta or {},
-                score=round(1 - dist, 4),  # Convert distance to similarity
+                score=round(1 - dist, 4),
             ))
 
     logger.info("Retrieved {n} chunks for query", n=len(chunks))

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { sendMessage } from "../api";
+import { createAstroChart, sendMessage } from "../api";
 import BirthDetailsForm from "./BirthDetailsForm";
 import ChartLoader from "./ChartLoader";
 import MessageInput from "./MessageInput";
@@ -19,17 +19,10 @@ export default function ChatContainer() {
     setLanguage(profile.preferred_language);
     setLoading(true);
     try {
-      const res = await sendMessage({
-        sessionId,
-        message: null,
-        userProfile: profile,
-        preferredLanguage: profile.preferred_language,
-      });
+      const res = await createAstroChart(profile);
       setSessionId(res.session_id);
-      setMessages([{ role: "assistant", content: res.response }]);
-      if (res.chart_svg) {
-        setChartSvg(res.chart_svg);
-      }
+      setChartSvg(res.chart_svg);
+      setMessages([{ role: "assistant", content: res.greeting }]);
     } catch (err) {
       setMessages([{ role: "assistant", content: `Error: ${err.message}` }]);
     } finally {
@@ -45,10 +38,8 @@ export default function ChatContainer() {
       const res = await sendMessage({
         sessionId,
         message: text,
-        userProfile,
         preferredLanguage: language,
       });
-      setSessionId(res.session_id);
       setMessages((prev) => [...prev, { role: "assistant", content: res.response }]);
     } catch (err) {
       setMessages((prev) => [

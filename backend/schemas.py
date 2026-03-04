@@ -21,11 +21,30 @@ class UserProfile(BaseModel):
     preferred_language: str = "en"
 
 
+class CreateChartRequest(BaseModel):
+    user_profile: UserProfile
+
+
+class CreateChartResponse(BaseModel):
+    session_id: str
+    chart_svg: str
+    zodiac: str
+    features: list[str]
+    context_used: list[str]
+    greeting: str
+
+
 class ChatRequest(BaseModel):
-    session_id: Optional[str] = None
-    message: Optional[str] = None
-    user_profile: Optional[UserProfile] = None
+    session_id: str
+    message: str
     preferred_language: str = "en"
+
+
+class ChatResponse(BaseModel):
+    session_id: str
+    response: str
+    context_used: list[str] = []
+    retrieval_used: bool = False
 
 
 class PlanetPlacement(BaseModel):
@@ -65,12 +84,3 @@ class RetrievalChunk(BaseModel):
     text: str
     metadata: dict = {}
     score: float = 0.0
-
-
-class ChatResponse(BaseModel):
-    session_id: str
-    response: str
-    zodiac: Optional[str] = None
-    chart_svg: Optional[str] = None
-    context_used: list[str] = []
-    retrieval_used: bool = False
