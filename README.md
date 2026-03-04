@@ -1,4 +1,4 @@
-# Mynaksh
+# Tara
 
 A conversational Vedic astrology agent. You give it your birth details, it builds your chart, and then you can chat with it about career, relationships, finances — whatever's on your mind. It remembers context across turns and pulls in astrological knowledge when needed.
 
