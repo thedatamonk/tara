@@ -7,13 +7,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 
 from backend import session_manager
-from backend.astrology_engine import generate_chart
+from backend.astrology_engine import generate_chart, generate_chart_svg
 from backend.feature_extractor import extract_features
 from backend.llm_agent import generate_response, needs_retrieval
 from backend.retrieval import query as retrieval_query
 from backend.schemas import BirthDetails, ChatRequest, ChatResponse
 
-app = FastAPI(title="Mynaksh — Astro Insight Agent")
+app = FastAPI(title="Tara — Astro Insight Agent")
 
 app.add_middleware(
     CORSMiddleware,
@@ -69,6 +69,9 @@ async def chat(req: ChatRequest):
             session_manager.set_chart_features(session.session_id, features)
             session.chart_features = features
 
+            svg = generate_chart_svg(session.birth_details)
+            session.chart_svg = svg
+
             zodiac = chart.ascendant
             logger.info("Chart and features generated for session {sid}",
                         sid=session.session_id)
@@ -110,10 +113,14 @@ async def chat(req: ChatRequest):
     # Record assistant message
     session_manager.add_message(session.session_id, "assistant", answer)
 
+    # Only send SVG on the initial chart generation response
+    send_svg = session.chart_svg if is_initial_greeting else None
+
     return ChatResponse(
         session_id=session.session_id,
         response=answer,
         zodiac=zodiac,
+        chart_svg=send_svg,
         context_used=context_used,
         retrieval_used=retrieval_used,
     )

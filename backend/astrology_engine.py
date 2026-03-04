@@ -1,5 +1,5 @@
 from geopy.geocoders import Nominatim
-from kerykeion import AstrologicalSubject
+from kerykeion import AstrologicalSubject, AstrologicalSubjectFactory, ChartDataFactory, ChartDrawer
 from loguru import logger
 from timezonefinder import TimezoneFinder
 
@@ -28,7 +28,7 @@ HOUSE_ATTRS = [
     "ninth_house", "tenth_house", "eleventh_house", "twelfth_house",
 ]
 
-_geocoder = Nominatim(user_agent="mynaksh")
+_geocoder = Nominatim(user_agent="tara")
 _tz_finder = TimezoneFinder()
 
 
@@ -106,3 +106,28 @@ def generate_chart(details: BirthDetails) -> BirthChart:
 
     logger.info("Chart generated: ascendant={asc}", asc=ascendant)
     return BirthChart(planets=planets, ascendant=ascendant, houses=houses)
+
+
+def generate_chart_svg(details: BirthDetails) -> str:
+    """Generate a natal chart SVG string using Kerykeion's chart drawer."""
+    year, month, day = (int(x) for x in details.birth_date.split("-"))
+    hour, minute = (int(x) for x in details.birth_time.split(":"))
+
+    if details.latitude is not None and details.longitude is not None:
+        lat, lng = details.latitude, details.longitude
+        tz_str = _tz_finder.timezone_at(lat=lat, lng=lng) or "UTC"
+    else:
+        lat, lng, tz_str = _geocode(details.birth_place)
+
+    subject = AstrologicalSubjectFactory.from_birth_data(
+        name=details.name, year=year, month=month, day=day,
+        hour=hour, minute=minute, city=details.birth_place,
+        lat=lat, lng=lng, tz_str=tz_str,
+    )
+
+    chart_data = ChartDataFactory.create_natal_chart_data(subject)
+    drawer = ChartDrawer(chart_data=chart_data, theme="dark")
+    svg_string = drawer.generate_svg_string()
+
+    logger.info("SVG chart generated for {name}", name=details.name)
+    return svg_string

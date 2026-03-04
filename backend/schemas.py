@@ -56,6 +56,7 @@ class SessionState(BaseModel):
     birth_details: Optional[BirthDetails] = None
     chart: Optional[BirthChart] = None
     chart_features: Optional[ChartFeatures] = None
+    chart_svg: Optional[str] = None
     messages: list[Message] = []
     preferred_language: str = "en"
 
@@ -70,5 +71,6 @@ class ChatResponse(BaseModel):
     session_id: str
     response: str
     zodiac: Optional[str] = None
+    chart_svg: Optional[str] = None
     context_used: list[str] = []
     retrieval_used: bool = False
