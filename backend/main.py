@@ -74,17 +74,13 @@ async def create_astro_chart(req: CreateChartRequest):
         logger.error("Chart generation failed: {err}", err=e)
         raise HTTPException(status_code=400, detail=f"Chart generation failed: {e}")
 
-    # Retrieve relevant chunks using features
+    # Generate initial greeting (no retrieval needed — user hasn't asked anything yet)
     feature_list = features.features
-    chunks = retrieval_query(feature_list, " ".join(feature_list))
-    context_used = list({c.metadata.get("source", "") for c in chunks if c.metadata.get("source")})
-
-    # Generate initial greeting
     greeting = await generate_response(
         user_message="[new session]",
         messages=session.messages,
         chart_features=features,
-        chunks=chunks,
+        chunks=[],
         preferred_language=session.preferred_language,
         birth_details=details,
     )
@@ -99,7 +95,6 @@ async def create_astro_chart(req: CreateChartRequest):
         chart_svg=svg,
         zodiac=chart.ascendant,
         features=feature_list,
-        context_used=context_used,
         greeting=greeting,
     )
 

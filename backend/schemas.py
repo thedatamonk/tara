@@ -30,7 +30,6 @@ class CreateChartResponse(BaseModel):
     chart_svg: str
     zodiac: str
     features: list[str]
-    context_used: list[str]
     greeting: str
 
 
