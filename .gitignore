@@ -11,3 +11,8 @@ wheels/
 
 .env
 
+# ChromaDB persistent storage
+chroma_db/
+
+.vscode/
+
