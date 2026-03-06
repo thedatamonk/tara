@@ -171,3 +171,8 @@ mynaksh/
 1. **No context window trimming** — conversation history grows unbounded; no truncation or token-limit management yet.
 2. **Agent doesn't ask follow-up questions** — currently the agent only answers user queries. It should proactively ask clarifying questions to give better responses.
 3. **Memory underutilized** — last-N-message summarization is implemented, but the agent doesn't check memory before making tool calls. If chart context for certain planets/houses is already in the summary, it could skip redundant lookups.
+
+## Credits
+
+- **Claude Code**— for coding and implementation
+- **ChatGPT Go** — for brainstorming ideas and teaching me about vedic astrology.
