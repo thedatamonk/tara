@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel
 
@@ -65,6 +65,11 @@ class Message(BaseModel):
     timestamp: datetime
 
 
+class SessionMemoryData(BaseModel):
+    user_concerns: list[str] = []
+    conversation_summary: str = ""
+
+
 class SessionState(BaseModel):
     session_id: str
     birth_details: Optional[BirthDetails] = None
@@ -72,9 +77,35 @@ class SessionState(BaseModel):
     chart_svg: Optional[str] = None
     messages: list[Message] = []
     preferred_language: str = "en"
+    memory: Optional[SessionMemoryData] = None
 
 
 class RetrievalChunk(BaseModel):
     text: str
     metadata: dict = {}
     score: float = 0.0
+
+
+class LLMResult(BaseModel):
+    text: str
+    retrieval_sources: list[str]
+    retrieval_used: bool
+
+
+class AstroClassification(BaseModel):
+    """LLM classification of a user message for astrological relevance."""
+    domain: Literal["career", "relationship", "money", "health", "non-astrology"] = "non-astrology"
+    relevant_planets: list[str] = []
+    relevant_houses: list[int] = []
+
+
+class AstroEntity(BaseModel):
+    entity_type: str  # "planet", "sign", or "house"
+    entity_name: str  # e.g. "Sun", "Aries", "Seventh House"
+
+
+class ResolvedPlanet(BaseModel):
+    """A planet from the classification that was confirmed in the natal chart."""
+    planet: str
+    sign: str
+    house: int

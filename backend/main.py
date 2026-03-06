@@ -11,6 +11,7 @@ from loguru import logger
 from backend import session_manager
 from backend.astrology_engine import generate_chart, generate_chart_svg
 from backend.llm_agent import generate_response
+from backend.memory import get_memory, maybe_trigger_memory_update
 from backend.retrieval import init_retrieval
 from backend.schemas import (
     BirthDetails,
@@ -105,10 +106,14 @@ async def chat(req: ChatRequest):
         preferred_language=req.preferred_language,
         birth_details=session.birth_details,
         chart=session.chart,
+        memory=get_memory(session),
     )
 
     # Record assistant message
     session_manager.add_message(session.session_id, "assistant", result.text)
+
+    # Background memory update (fire-and-forget, every N messages)
+    maybe_trigger_memory_update(session)
 
     # Determine zodiac from Sun sign
     sun = next((p for p in session.chart.planets if p.planet == "Sun"), None)
