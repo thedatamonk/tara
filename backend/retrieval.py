@@ -33,53 +33,47 @@ def _ingest_knowledge() -> None:
     metadatas: list[dict] = []
     ids: list[str] = []
 
-    # Load JSON knowledge bases
-    for filename in ["zodiac_traits.json", "planetary_impacts.json", "nakshatra_mapping.json"]:
-        path = DATA_DIR / filename
-        if not path.exists():
-            logger.warning("Missing data file: {f}", f=filename)
-            continue
+    # Planets
+    planets = json.loads((DATA_DIR / "planet_meanings.json").read_text())
+    for p in planets:
+        doc = f"{p['name']}. {p['description']} Life domains: {', '.join(p['life_domains'])}"
+        documents.append(doc)
+        metadatas.append({"type": "planet", "name": p["name"], "source": "planet_meanings.json"})
+        ids.append(f"planet_{p['name'].lower()}")
 
-        data = json.loads(path.read_text())
-        source = filename.replace(".json", "")
+    # Signs
+    signs = json.loads((DATA_DIR / "zodiac_sign_meanings.json").read_text())
+    for s in signs:
+        doc = (f"{s['name']}. {s['personality']} "
+               f"Strengths: {', '.join(s['strengths'])}. "
+               f"Challenges: {', '.join(s['challenges'])}")
+        documents.append(doc)
+        metadatas.append({"type": "sign", "name": s["name"], "source": "zodiac_sign_meanings.json"})
+        ids.append(f"sign_{s['name'].lower()}")
 
-        if isinstance(data, dict):
-            for key, value in data.items():
-                if isinstance(value, dict):
-                    text = f"{key}: " + ". ".join(f"{k}: {v}" for k, v in value.items())
-                else:
-                    text = f"{key}: {value}"
-                doc_id = f"{source}_{key.lower().replace(' ', '_')}"
-                documents.append(text)
-                metadatas.append({"source": source, "key": key})
-                ids.append(doc_id)
-
-    # Load text guidance files
-    for filename in ["career_guidance.txt", "love_guidance.txt", "spiritual_guidance.txt"]:
-        path = DATA_DIR / filename
-        if not path.exists():
-            logger.warning("Missing data file: {f}", f=filename)
-            continue
-
-        source = filename.replace(".txt", "")
-        lines = [l.strip() for l in path.read_text().splitlines() if l.strip()]
-        for i, line in enumerate(lines):
-            documents.append(line)
-            metadatas.append({"source": source})
-            ids.append(f"{source}_{i}")
+    # Houses
+    houses = json.loads((DATA_DIR / "house_meanings.json").read_text())
+    for h in houses:
+        doc = f"{h['name']}. {h['description']} Life domains: {', '.join(h['life_domains'])}"
+        documents.append(doc)
+        metadatas.append({"type": "house", "name": h["name"], "source": "house_meanings.json"})
+        ids.append(f"house_{h['name'].lower().replace(' ', '_')}")
 
     if documents:
         _collection.add(documents=documents, metadatas=metadatas, ids=ids)
         logger.info("Ingested {n} documents into ChromaDB", n=len(documents))
 
 
-def query(features: list[str], user_question: str, n_results: int = 5) -> list[RetrievalChunk]:
+def query(user_question: str, entity_type: str | None = None, entity_name: str | None = None, n_results: int = 5) -> list[RetrievalChunk]:
     if _collection is None:
         raise RuntimeError("ChromaDB not initialized — call init_retrieval() first")
 
-    query_text = f"{user_question} {' '.join(features)}"
-
-    results = _collection.query(query_texts=[query_text], n_results=n_results)
+    where = None
+    if entity_type and entity_name:
+        where = {"$and": [{"type": entity_type}, {"name": entity_name}]}
+    elif entity_type:
+        where = {"type": entity_type}
+    results = _collection.query(query_texts=[user_question], n_results=n_results, where=where)
 
     chunks = []
     if results["documents"] and results["documents"][0]:

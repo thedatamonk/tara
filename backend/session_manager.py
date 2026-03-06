@@ -6,7 +6,6 @@ from loguru import logger
 from backend.schemas import (
     BirthChart,
     BirthDetails,
-    ChartFeatures,
     Message,
     SessionState,
 )
@@ -48,7 +47,3 @@ def set_chart(session_id: str, chart: BirthChart) -> None:
         session.chart = chart
 
 
-def set_chart_features(session_id: str, features: ChartFeatures) -> None:
-    session = _sessions.get(session_id)
-    if session:
-        session.chart_features = features

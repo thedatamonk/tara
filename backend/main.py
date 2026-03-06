@@ -10,9 +10,8 @@ from loguru import logger
 
 from backend import session_manager
 from backend.astrology_engine import generate_chart, generate_chart_svg
-from backend.feature_extractor import extract_features
-from backend.llm_agent import generate_response, needs_retrieval
-from backend.retrieval import init_retrieval, query as retrieval_query
+from backend.llm_agent import generate_response
+from backend.retrieval import init_retrieval
 from backend.schemas import (
     BirthDetails,
     ChatRequest,
@@ -65,25 +64,14 @@ async def create_astro_chart(req: CreateChartRequest):
         chart = generate_chart(details)
         session_manager.set_chart(session.session_id, chart)
 
-        features = extract_features(chart)
-        session_manager.set_chart_features(session.session_id, features)
-
         svg = generate_chart_svg(details)
         session.chart_svg = svg
     except Exception as e:
         logger.error("Chart generation failed: {err}", err=e)
         raise HTTPException(status_code=400, detail=f"Chart generation failed: {e}")
 
-    # Generate initial greeting (no retrieval needed — user hasn't asked anything yet)
-    feature_list = features.features
-    greeting = await generate_response(
-        user_message="[new session]",
-        messages=session.messages,
-        chart_features=features,
-        chunks=[],
-        preferred_language=session.preferred_language,
-        birth_details=details,
-    )
+    # Static greeting — no LLM call needed
+    greeting = f"Namaste {details.name}!"
 
     # Store greeting in session
     session_manager.add_message(session.session_id, "assistant", greeting)
@@ -94,7 +82,6 @@ async def create_astro_chart(req: CreateChartRequest):
         session_id=session.session_id,
         chart_svg=svg,
         zodiac=chart.ascendant,
-        features=feature_list,
         greeting=greeting,
     )
 
@@ -111,32 +98,28 @@ async def chat(req: ChatRequest):
     # Record user message
     session_manager.add_message(session.session_id, "user", req.message)
 
-    # Retrieval (intent-based)
-    chunks = []
-    context_used = []
-    retrieval_used = False
-    if needs_retrieval(req.message, has_chart=True):
-        feature_list = session.chart_features.features if session.chart_features else []
-        chunks = retrieval_query(feature_list, req.message)
-        retrieval_used = bool(chunks)
-        context_used = list({c.metadata.get("source", "") for c in chunks if c.metadata.get("source")})
-
-    # LLM response
-    answer = await generate_response(
+    # LLM response (agent handles retrieval internally via tool)
+    result = await generate_response(
         user_message=req.message,
         messages=session.messages,
-        chart_features=session.chart_features,
-        chunks=chunks,
         preferred_language=req.preferred_language,
         birth_details=session.birth_details,
+        chart=session.chart,
     )
 
     # Record assistant message
-    session_manager.add_message(session.session_id, "assistant", answer)
+    session_manager.add_message(session.session_id, "assistant", result.text)
 
-    return ChatResponse(
+    # Determine zodiac from Sun sign
+    sun = next((p for p in session.chart.planets if p.planet == "Sun"), None)
+    zodiac = sun.sign if sun else session.chart.ascendant
+
+    chat_response = ChatResponse(
         session_id=session.session_id,
-        response=answer,
-        context_used=context_used,
-        retrieval_used=retrieval_used,
+        response=result.text,
+        zodiac=zodiac,
+        context_used=result.retrieval_sources,
+        retrieval_used=result.retrieval_used,
     )
+    logger.info("ChatResponse: {r}", r=chat_response.model_dump())
+    return chat_response

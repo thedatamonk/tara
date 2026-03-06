@@ -29,7 +29,6 @@ class CreateChartResponse(BaseModel):
     session_id: str
     chart_svg: str
     zodiac: str
-    features: list[str]
     greeting: str
 
 
@@ -42,8 +41,9 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     session_id: str
     response: str
-    context_used: list[str] = []
-    retrieval_used: bool = False
+    zodiac: str
+    context_used: list[str]
+    retrieval_used: bool
 
 
 class PlanetPlacement(BaseModel):
@@ -59,10 +59,6 @@ class BirthChart(BaseModel):
     houses: dict[int, str]
 
 
-class ChartFeatures(BaseModel):
-    features: list[str]
-
-
 class Message(BaseModel):
     role: str  # "user" or "assistant"
     content: str
@@ -73,7 +69,6 @@ class SessionState(BaseModel):
     session_id: str
     birth_details: Optional[BirthDetails] = None
     chart: Optional[BirthChart] = None
-    chart_features: Optional[ChartFeatures] = None
     chart_svg: Optional[str] = None
     messages: list[Message] = []
     preferred_language: str = "en"
