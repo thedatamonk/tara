@@ -1,0 +1,62 @@
+[
+  {
+    "name": "First House",
+    "life_domains": ["identity", "personality", "physical appearance", "self image"],
+    "description": "The First House represents the self. It describes a person's identity, outward personality, and how they present themselves to the world. Astrologers often look at this house to understand someone's natural temperament, confidence, and approach to life. It is also associated with physical appearance and the overall direction a person takes in life."
+  },
+  {
+    "name": "Second House",
+    "life_domains": ["money", "personal finances", "possessions", "values"],
+    "description": "The Second House is associated with personal wealth and material resources. It describes how a person earns money, manages financial resources, and what they value in life. This house is also linked to possessions, financial stability, and attitudes toward security and comfort."
+  },
+  {
+    "name": "Third House",
+    "life_domains": ["communication", "learning", "siblings", "short travel"],
+    "description": "The Third House governs communication, everyday learning, and the exchange of information. It is associated with speaking, writing, education at an early level, and curiosity about the surrounding world. This house also relates to relationships with siblings, neighbors, and short-distance travel."
+  },
+  {
+    "name": "Fourth House",
+    "life_domains": ["home", "family", "mother", "emotional foundations"],
+    "description": "The Fourth House represents home, family life, and emotional foundations. It reflects a person's roots, upbringing, and sense of security. Astrologers often examine this house to understand one's relationship with family members, particularly the mother, and the environment in which a person feels most comfortable."
+  },
+  {
+    "name": "Fifth House",
+    "life_domains": ["creativity", "romance", "children", "self expression"],
+    "description": "The Fifth House is associated with creativity, joy, and personal expression. It governs activities that bring pleasure such as art, entertainment, hobbies, and romance. This house is also connected with children, playful activities, and the desire to express one's individuality."
+  },
+  {
+    "name": "Sixth House",
+    "life_domains": ["work routines", "health", "daily responsibilities", "service"],
+    "description": "The Sixth House relates to daily work, routines, and responsibilities. It describes how a person approaches tasks, employment, and service to others. This house is also connected with physical health, habits, and maintaining balance through disciplined routines."
+  },
+  {
+    "name": "Seventh House",
+    "life_domains": ["marriage", "long term relationships", "partnerships", "contracts"],
+    "description": "The Seventh House governs partnerships and committed relationships. It is most commonly associated with marriage and romantic partnerships, but it also includes business partnerships and legal agreements. Astrologers study this house to understand how a person approaches commitment and what kind of partners they attract."
+  },
+  {
+    "name": "Eighth House",
+    "life_domains": ["transformation", "shared finances", "inheritance", "deep change"],
+    "description": "The Eighth House is linked with transformation, shared resources, and deep emotional experiences. It often relates to joint finances, inheritance, and financial matters involving other people. Astrologers also associate this house with psychological transformation, life crises, and major turning points."
+  },
+  {
+    "name": "Ninth House",
+    "life_domains": ["higher education", "philosophy", "long distance travel", "belief systems"],
+    "description": "The Ninth House represents the search for knowledge and meaning. It is connected with higher education, philosophy, religion, and the exploration of ideas that expand one's understanding of the world. This house is also associated with long-distance travel and exposure to different cultures and perspectives."
+  },
+  {
+    "name": "Tenth House",
+    "life_domains": ["career", "public reputation", "status", "professional achievements"],
+    "description": "The Tenth House represents career, ambition, and public reputation. It reflects a person's professional goals, achievements, and the role they play in society. Astrologers often analyze this house to understand career direction, leadership potential, and recognition in the public sphere."
+  },
+  {
+    "name": "Eleventh House",
+    "life_domains": ["income", "gains", "friendships", "social networks"],
+    "description": "The Eleventh House is associated with social connections, friendships, and long-term goals. It represents the benefits a person receives from their efforts, including financial gains and support from communities. This house is also linked with teamwork, organizations, and collective ambitions."
+  },
+  {
+    "name": "Twelfth House",
+    "life_domains": ["spirituality", "isolation", "hidden matters", "inner healing"],
+    "description": "The Twelfth House represents the inner world, spirituality, and hidden aspects of life. It is often associated with introspection, solitude, and the subconscious mind. Astrologers also link this house to spiritual growth, healing, and situations that occur behind the scenes or outside public view."
+  }
+]

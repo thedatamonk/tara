@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Sun",
+    "description": "In astrology, the Sun represents a person's core identity and sense of purpose. It symbolizes the fundamental essence of who someone is — their individuality, confidence, and desire to express themselves in the world. Just as the physical Sun is the center of our solar system, the Sun in a birth chart is considered the central force that drives a person's motivations and life direction. Astrologers often associate the Sun with leadership, authority, ambition, and recognition. A strong Sun placement is traditionally interpreted as indicating confidence, self-assurance, and the ability to take on leadership roles. A weaker or challenged Sun placement may indicate struggles with confidence, identity, or feeling recognized by others. The Sun is also connected with father figures, authority figures, and one's overall vitality and life energy.",
+    "life_domains": [
+      "identity",
+      "self confidence",
+      "leadership",
+      "authority and power",
+      "career recognition",
+      "life purpose",
+      "relationship with father or authority figures"
+    ]
+  },
+
+  {
+    "name": "Moon",
+    "description": "The Moon represents the emotional and psychological side of a person. While the Sun symbolizes the conscious identity, the Moon describes the inner emotional world — how someone feels, reacts, and seeks comfort. It is associated with instincts, habits, moods, and the subconscious mind. In astrology, the Moon is often used to understand how a person processes emotions and what makes them feel safe or emotionally fulfilled. The Moon is also strongly connected with nurturing, caregiving, and maternal influences, and it often reflects one's relationship with their mother or early childhood environment. A well-placed Moon is traditionally interpreted as emotional stability, empathy, and strong intuition, while challenging Moon placements may suggest emotional sensitivity, mood fluctuations, or difficulty feeling secure.",
+    "life_domains": [
+      "emotions",
+      "mental state",
+      "intuition",
+      "daily habits",
+      "relationship with mother",
+      "emotional security",
+      "inner psychological patterns"
+    ]
+  },
+
+  {
+    "name": "Mars",
+    "description": "Mars represents energy, action, and the drive to pursue goals. In astrology it is often associated with courage, ambition, competitiveness, and the ability to confront challenges. Mars describes how a person takes initiative, how they express anger, and how they handle conflict or competition. Because it represents raw physical and psychological energy, Mars is also connected with physical strength, athletic ability, and sexual energy. A strong Mars placement is traditionally interpreted as giving determination, bravery, and the willingness to take decisive action. However, when Mars is poorly placed or strongly challenged, it may be associated with impulsiveness, aggression, impatience, or unnecessary conflicts with others.",
+    "life_domains": [
+      "ambition",
+      "physical energy",
+      "competition",
+      "conflict and confrontation",
+      "courage and initiative",
+      "sexual energy",
+      "assertiveness"
+    ]
+  },
+
+  {
+    "name": "Mercury",
+    "description": "Mercury represents the intellect and the way a person thinks, communicates, and processes information. In astrology it is associated with logic, learning, language, and curiosity. Mercury describes how someone expresses ideas, how quickly they grasp new concepts, and how they interact with information in everyday life. It also influences communication styles, including speaking, writing, teaching, and negotiation. Because of its association with thinking and analysis, Mercury is often linked to education, business, trade, and technology. A strong Mercury placement may indicate sharp intellect, adaptability, and excellent communication skills. A challenged Mercury placement may be interpreted as confusion, miscommunication, overthinking, or difficulty expressing ideas clearly.",
+    "life_domains": [
+      "communication",
+      "learning and education",
+      "logical thinking",
+      "writing and speaking",
+      "business and commerce",
+      "information processing",
+      "intellectual curiosity"
+    ]
+  },
+
+  {
+    "name": "Jupiter",
+    "description": "Jupiter is traditionally considered the planet of growth, expansion, wisdom, and good fortune. In astrology it represents the desire to learn, grow, and explore life's possibilities. Jupiter is associated with higher education, philosophy, spirituality, and the search for meaning. It also symbolizes abundance, generosity, and opportunities for personal development. Many astrologers interpret Jupiter as a planet that brings protection or fortunate opportunities, particularly when it is well placed in a birth chart. A strong Jupiter placement is often interpreted as optimism, generosity, wisdom, and success through knowledge or teaching. However, an exaggerated Jupiter influence may sometimes symbolize overconfidence, excessive risk-taking, or unrealistic optimism.",
+    "life_domains": [
+      "wealth and prosperity",
+      "education and learning",
+      "spirituality",
+      "philosophy and beliefs",
+      "luck and opportunity",
+      "mentorship and teaching",
+      "personal growth"
+    ]
+  },
+
+  {
+    "name": "Venus",
+    "description": "Venus represents love, attraction, beauty, and pleasure. In astrology it is associated with relationships, romance, artistic expression, and the enjoyment of life's comforts. Venus describes what a person finds attractive, how they express affection, and how they experience love and companionship. It is also linked with creativity, aesthetics, and appreciation for art, music, and luxury. Because Venus symbolizes harmony and pleasure, it often represents social relationships and the desire for connection with others. A strong Venus placement is traditionally interpreted as charm, creativity, romantic attraction, and appreciation for beauty. A challenged Venus placement may suggest relationship difficulties, excessive indulgence, or challenges in balancing pleasure and responsibility.",
+    "life_domains": [
+      "romantic relationships",
+      "marriage and partnerships",
+      "beauty and aesthetics",
+      "art and creativity",
+      "luxury and comfort",
+      "social relationships",
+      "personal attraction"
+    ]
+  },
+
+  {
+    "name": "Saturn",
+    "description": "Saturn represents discipline, responsibility, structure, and long-term challenges. In astrology it is often described as the planet that teaches important life lessons through effort, patience, and persistence. Saturn is associated with hard work, limitations, and the need to develop maturity over time. While Saturn can represent obstacles or delays, many astrologers interpret these experiences as necessary steps toward building strength, resilience, and stability. A strong Saturn placement may indicate discipline, responsibility, and the ability to work steadily toward long-term goals. A difficult Saturn placement may symbolize feelings of restriction, fear of failure, or periods in life that require significant perseverance and personal growth.",
+    "life_domains": [
+      "discipline",
+      "responsibility",
+      "career struggles",
+      "life lessons",
+      "long term stability",
+      "hard work and persistence",
+      "structure and authority"
+    ]
+  },
+
+  {
+    "name": "Rahu",
+    "description": "Rahu is considered a shadow planet in Vedic astrology and represents ambition, obsession, and the desire for worldly success. It is often associated with unconventional paths, sudden opportunities, and intense cravings for achievement or recognition. Rahu tends to amplify whatever it touches, sometimes creating powerful desires for material success, fame, or influence. Because Rahu represents unfamiliar or foreign experiences, it is often linked with technology, innovation, foreign cultures, and unusual career paths. When interpreted positively, Rahu may symbolize bold ambition, innovation, and the ability to break traditional boundaries. When interpreted negatively, it may represent confusion, illusion, or excessive attachment to material success.",
+    "life_domains": [
+      "ambition",
+      "material success",
+      "foreign travel or cultures",
+      "technology and innovation",
+      "sudden opportunities",
+      "unconventional life paths",
+      "obsession and desire"
+    ]
+  },
+
+  {
+    "name": "Ketu",
+    "description": "Ketu is the other shadow planet in Vedic astrology and is often associated with detachment, spirituality, and past experiences. While Rahu represents worldly desire and ambition, Ketu represents the opposite force — letting go of material attachments and turning inward toward self-reflection and spiritual understanding. Ketu is often interpreted as representing past karma, subconscious tendencies, and experiences that encourage a person to seek deeper meaning beyond material success. A strong Ketu influence may be interpreted as spiritual insight, intuition, and a natural tendency toward philosophical or mystical thinking. However, it may also represent periods of confusion, isolation, or detachment from worldly goals.",
+    "life_domains": [
+      "spirituality",
+      "detachment from material goals",
+      "intuition",
+      "inner transformation",
+      "past life influences",
+      "mysticism",
+      "self reflection"
+    ]
+  }
+]

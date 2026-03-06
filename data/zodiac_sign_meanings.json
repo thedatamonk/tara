@@ -1,0 +1,206 @@
+[
+  {
+    "name": "Aries",
+    "personality": "Aries is often described as energetic, bold, and action-oriented. People associated with this sign are believed to enjoy taking initiative and leading new ventures. They tend to approach life directly and prefer action over long deliberation.",
+    "strengths": [
+      "leadership",
+      "confidence",
+      "courage",
+      "initiative",
+      "enthusiasm"
+    ],
+    "challenges": [
+      "impulsiveness",
+      "impatience",
+      "short temper",
+      "acting before thinking"
+    ]
+  },
+  {
+    "name": "Taurus",
+    "personality": "Taurus is typically associated with stability, patience, and practicality. People linked with this sign are often described as grounded individuals who value comfort, security, and reliability in their lives.",
+    "strengths": [
+      "reliability",
+      "patience",
+      "practical thinking",
+      "loyalty",
+      "determination"
+    ],
+    "challenges": [
+      "stubbornness",
+      "resistance to change",
+      "possessiveness",
+      "over attachment to comfort"
+    ]
+  },
+  {
+    "name": "Gemini",
+    "personality": "Gemini is associated with curiosity, adaptability, and communication. People connected with this sign are often described as intellectually curious and interested in learning new ideas or engaging in conversations.",
+    "strengths": [
+      "communication skills",
+      "adaptability",
+      "curiosity",
+      "quick thinking",
+      "social intelligence"
+    ],
+    "challenges": [
+      "restlessness",
+      "inconsistency",
+      "difficulty focusing",
+      "indecisiveness"
+    ]
+  },
+  {
+    "name": "Cancer",
+    "personality": "Cancer is often associated with emotional sensitivity, nurturing behavior, and strong attachment to home and family. People linked with this sign are believed to value emotional security and meaningful relationships.",
+    "strengths": [
+      "empathy",
+      "nurturing nature",
+      "loyalty",
+      "strong intuition",
+      "protectiveness"
+    ],
+    "challenges": [
+      "moodiness",
+      "over sensitivity",
+      "difficulty letting go of past experiences",
+      "emotional withdrawal"
+    ]
+  },
+  {
+    "name": "Leo",
+    "personality": "Leo is commonly described as confident, expressive, and charismatic. Individuals associated with this sign are often portrayed as natural performers who enjoy recognition and expressing their creativity.",
+    "strengths": [
+      "confidence",
+      "charisma",
+      "generosity",
+      "creativity",
+      "leadership"
+    ],
+    "challenges": [
+      "need for attention",
+      "pride",
+      "dramatic reactions",
+      "difficulty accepting criticism"
+    ]
+  },
+  {
+    "name": "Virgo",
+    "personality": "Virgo is typically associated with careful thinking, analytical ability, and attention to detail. People connected with this sign are often described as practical problem solvers who value order and efficiency.",
+    "strengths": [
+      "analytical thinking",
+      "attention to detail",
+      "organization",
+      "practical problem solving",
+      "reliability"
+    ],
+    "challenges": [
+      "overthinking",
+      "perfectionism",
+      "excessive criticism",
+      "worry or anxiety"
+    ]
+  },
+  {
+    "name": "Libra",
+    "personality": "Libra is often linked with balance, fairness, and harmony in relationships. People associated with this sign are believed to value diplomacy, cooperation, and creating peaceful environments.",
+    "strengths": [
+      "diplomacy",
+      "fairness",
+      "social charm",
+      "cooperation",
+      "sense of balance"
+    ],
+    "challenges": [
+      "indecisiveness",
+      "people pleasing",
+      "avoidance of conflict",
+      "difficulty taking firm positions"
+    ]
+  },
+  {
+    "name": "Scorpio",
+    "personality": "Scorpio is associated with emotional intensity, determination, and deep psychological insight. People linked with this sign are often described as passionate individuals who pursue goals with strong focus.",
+    "strengths": [
+      "determination",
+      "emotional depth",
+      "resilience",
+      "strategic thinking",
+      "loyalty"
+    ],
+    "challenges": [
+      "jealousy",
+      "secretiveness",
+      "possessiveness",
+      "difficulty trusting others"
+    ]
+  },
+  {
+    "name": "Sagittarius",
+    "personality": "Sagittarius is commonly associated with curiosity, exploration, and philosophical thinking. People connected with this sign are often portrayed as adventurous individuals who enjoy learning about the world.",
+    "strengths": [
+      "optimism",
+      "curiosity",
+      "love for exploration",
+      "honesty",
+      "philosophical thinking"
+    ],
+    "challenges": [
+      "restlessness",
+      "impatience",
+      "blunt communication",
+      "difficulty committing"
+    ]
+  },
+  {
+    "name": "Capricorn",
+    "personality": "Capricorn is often described as disciplined, ambitious, and goal-oriented. People associated with this sign are believed to value structure, responsibility, and long-term achievements.",
+    "strengths": [
+      "discipline",
+      "ambition",
+      "responsibility",
+      "persistence",
+      "strategic planning"
+    ],
+    "challenges": [
+      "workaholism",
+      "pessimism",
+      "emotional reserve",
+      "over focus on status"
+    ]
+  },
+  {
+    "name": "Aquarius",
+    "personality": "Aquarius is often associated with originality, independent thinking, and interest in social progress. People linked with this sign are frequently described as innovative thinkers who enjoy exploring unconventional ideas.",
+    "strengths": [
+      "innovation",
+      "independent thinking",
+      "intellectual curiosity",
+      "humanitarian outlook",
+      "creativity"
+    ],
+    "challenges": [
+      "emotional detachment",
+      "stubborn opinions",
+      "rebelliousness",
+      "difficulty expressing feelings"
+    ]
+  },
+  {
+    "name": "Pisces",
+    "personality": "Pisces is commonly associated with empathy, imagination, and emotional sensitivity. People connected with this sign are often described as compassionate individuals who have strong creative or artistic tendencies.",
+    "strengths": [
+      "compassion",
+      "creativity",
+      "intuition",
+      "empathy",
+      "imagination"
+    ],
+    "challenges": [
+      "escapism",
+      "over sensitivity",
+      "difficulty setting boundaries",
+      "emotional overwhelm"
+    ]
+  }
+]
