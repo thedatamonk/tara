@@ -14,5 +14,8 @@ wheels/
 # ChromaDB persistent storage
 chroma_db/
 
+# Kerykeion geonames cache
+cache/
+
 .vscode/
 
