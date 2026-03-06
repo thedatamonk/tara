@@ -17,5 +17,8 @@ chroma_db/
 # Kerykeion geonames cache
 cache/
 
+# Conversation memory (runtime data)
+memory/
+
 .vscode/
 
